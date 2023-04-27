@@ -342,7 +342,7 @@ setup_download_options () {
     then
         if cat /etc/redhat-release  | grep "Fedora release" > /dev/null 2>&1; then
             cd ${project_dir}
-            curl -OL https://download.fedoraproject.org/pub/fedora/linux/releases/35/Cloud/x86_64/images/${artifact_fedora_qcow_image}
+            curl -OL http://ftp.usf.edu/pub/fedora/linux/releases/37/Server/x86_64/images/${artifact_fedora_qcow_image}
             qcow_image_checksum=$(grep "qcow_fedora_checksum" "${project_dir}/playbooks/vars/all.yml"|awk '{print $2}')
             DWLD_CHECKSUM=$(sha256sum ${project_dir}/${artifact_fedora_qcow_image}|awk '{print $1}')
             if [ $DWLD_CHECKSUM != $qcow_image_checksum ];
